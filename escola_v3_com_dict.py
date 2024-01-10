@@ -23,9 +23,11 @@ aulas = {
 }
 
 # Listar alunos em cada atividade por sala
-for aula in aulas:
+for aula,sala in aulas.items():
 
-    print(f"Alunos da atividade de {aula}")
+    print(f"Alunos da atividade de: {aula}")
     print("-" * 28)
-    print(f"{aulas[aula]}")
-    print()
+    for nome_da_sala, alunos in sala.items():
+        print(f"Alunos da sala {nome_da_sala}")
+        for aluno in alunos:
+            print(f" {aluno}") 
