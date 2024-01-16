@@ -1,30 +1,36 @@
-email_tmpl = """
-Olá, %(nome)s
 
-Tem interesse em comprar %(produto)s?
 
-Este produto é ótimo para resolver
-%(texto)s
+import sys
+import os
 
-Clique agora em %(link)s
+arguments = sys.argv[1:]
+if not arguments:
+    print("Informe o nome do arquivo de e-mails")
+    sys.exit(1)
+    
+filename = arguments[0]
+templatename = arguments[1]
 
-Apenas %(quantidade)d disponiveis!
+path = os.curdir
+filepath = os.path.join(path, filename) # emails.txt
+templatepath = os.path.join(path, templatename) # email_tmpl.txt
 
-Preço promocional %(preco).2f
-"""
 
-clientes = ["Maria", "João", "Bruno", "Victor"]
+for line in open(filepath):
+    name, email = line.split(",")
 
-for cliente in clientes:
+    # TODO: Substituir por envio de email
+    print(f"Enviando e-mail para: {email}")
+    print()
     print(
-        email_tmpl
+        open(templatepath).read()
         %{
-            "nome":cliente,
+            "nome": name,
             "produto":"caneta",
             "texto":"Escrever muito bem",
             "link":"https://canetaslegais.com",
             "quantidade":1,
-            "preco":50.5
+            "preco":50.5,
         }
     )
-    
+    print("-" * 50)
