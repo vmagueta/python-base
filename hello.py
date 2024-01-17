@@ -48,6 +48,8 @@ if current_language is None:
     else:
         current_language = input("Choose a language:")
 
+current_language = current_language[:5]
+
 msg = {
         "en_US" : "Hello, World!",
         "pt_BR" : "Olá, Mundo!",
