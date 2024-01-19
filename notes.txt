@@ -1,3 +1,5 @@
 Minha primeira nota	geral	Minha nota 1
 Minha segunda nota	tech	python é lega
 Minha terceira nota	tech	Java também é legal, né!?
+Minha	geral	esse bloco de notas é legal!!!
+Minha quarta anotação	geral	esse bloco de notas esta cada vez mais incrível
