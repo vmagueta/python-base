@@ -31,6 +31,21 @@ __version__ = "0.1.0"
 import sys
 import os
 from datetime import datetime
+import logging
+
+# BOILERPLATE
+# TODO: usar função
+# TODO: usar lib (loguru)
+log_level = os.getenv("LOG_LEVEL", "WARNING").upper()
+log = logging.Logger("prefixcalc.py", log_level)
+ch = logging.StreamHandler()
+ch.setLevel(log_level)
+fmt = logging.Formatter(
+    '%(asctime)s  %(name)s  %(levelname)s '
+    'l:%(lineno)d f:%(filename)s: %(message)s'
+)
+ch.setFormatter(fmt)
+log.addHandler(ch)
 
 arguments = sys.argv[1:]
 
@@ -92,7 +107,9 @@ try:
         file_.write(f"{timestamp} - {user} - {operation}, {n1}, {n2} = {result}\n")
 except PermissionError as e:
     # TODO: logging
-    print(str(e))
+    log.error(
+        '%(str(e))s'
+    )
     sys.exit(1)
 
 #print(f"{operation}, {n1}, {n2} = {result}", file=open(filename, "a"))
