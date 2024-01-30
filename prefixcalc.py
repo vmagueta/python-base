@@ -32,20 +32,25 @@ import sys
 import os
 from datetime import datetime
 import logging
-
+from logging import handlers
 # BOILERPLATE
 # TODO: usar função
 # TODO: usar lib (loguru)
 log_level = os.getenv("LOG_LEVEL", "WARNING").upper()
 log = logging.Logger("prefixcalc.py", log_level)
-ch = logging.StreamHandler()
-ch.setLevel(log_level)
+#ch = logging.StreamHandler()
+#ch.setLevel(log_level)
+fh = handlers.RotatingFileHandler(
+    "prefixlog.log",
+    maxBytes=10**6,
+    backupCount=10,
+)
 fmt = logging.Formatter(
     '%(asctime)s  %(name)s  %(levelname)s '
     'l:%(lineno)d f:%(filename)s: %(message)s'
 )
-ch.setFormatter(fmt)
-log.addHandler(ch)
+fh.setFormatter(fmt)
+log.addHandler(fh)
 
 arguments = sys.argv[1:]
 
