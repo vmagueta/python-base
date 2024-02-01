@@ -3,3 +3,12 @@ Minha segunda nota	tech	python é lega
 Minha terceira nota	tech	Java também é legal, né!?
 Minha	geral	esse bloco de notas é legal!!!
 Minha quarta anotação	geral	esse bloco de notas esta cada vez mais incrível
+MInha terceira nota	tech	Python é maneiro
+Repeticoes	python	WHIle e for para repetir
+Post 1	geral	é nois
+Foobar	foo	foo foo foo
+Outro	geral	vamo nessa
+Meu Post Legal	geral	legal
+Estou Com Fome	comida	Batata
+Mais Fome Ainda	comida	Arroz
+Legal Demais	geral	Isso é muito legal
