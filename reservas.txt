@@ -1,0 +1,3 @@
+Victor, 1, 8
+Kamila, 2, 10
+Puperon, 4, 20
