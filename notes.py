@@ -34,7 +34,7 @@ while True:
 
     if arguments [0] == "read":
         try:
-            arg_Tag = arguments[1].lower()
+            arg_tag = arguments[1].lower()
         except IndexError:
             arg_tag = input("Qual a tag?").strip().lower()
         # Leitura das notas
