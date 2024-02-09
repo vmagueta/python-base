@@ -28,6 +28,8 @@ mensagem informando que já está reservado.
 import logging
 import sys
 
+# TODO: Usar pacote csv
+
 ocupados = {}
 try:
     for line in open("reservas.txt"):
