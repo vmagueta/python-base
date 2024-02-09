@@ -14,44 +14,42 @@ temp <0: ALERTA!!! Frio extremo
 """
 
 import logging
-import sys
 
-log = logging.Logger("ALERTA")
-ch = logging.StreamHandler()
-fmt = logging.Formatter(
-    '%(levelname)s\n'
-    '%(asctime)s \n'
-    'file: %(filename)s line: %(lineno)d \n'
-    'message: %(message)s'
-)
-ch.setFormatter(fmt)
-log.addHandler(ch)
+log = logging.Logger("alerta")
+
+# TODO: Usar funcoes para ler input
 
 info = {
     "temperatura": None,
-    "umidade": None
+    "umidade": None,
 }
-keys = info.keys()
 
-for key in keys:
-    try:
-        info[key] = float(input(f"Qual a {key}? \n").strip())
-         
-    except ValueError:
-        log.error(f"{key.capitalize()} inválida")
-        sys.exit(1)
+while True:
+    # condicao de parada
+    # o dicionario está completamente preenchido
+    info_size = len(info.values())
+    filled_size = len([value for value in info.values() if value is not None])
+    if info_size == filled_size:
+        break # para o while
 
-temp = info["temperatura"]
-umid = info["umidade"] 
-umid_alert = info["temperatura"] * 3
+    for key in info.keys(): # ["temperatura", "umidade"]
+        if info[key] is not None:
+            continue
+        try:
+            info[key] = int(input(f"{key}: "))
+        except ValueError:
+            log.error("%s inválidade, digite números", key)
+            break # para o for
+
+temp, umidade = info.values() # unpacking [30, 90]
 
 if temp > 45:
-    print("ALERTA!!! Perigo, calor extremo.")
-elif umid <= umid_alert:
-    print("ALERTA!!! Perigo de calor úmido.")
+    print("ALERTA!!! 🥵 Perigo, calor extremo.")
+elif temp > 30 and temp * 3  >= umidade:
+    print("ALERTA!!! 🥵🌊 Perigo de calor úmido.")
 elif temp >= 10 and temp <= 30: # elif temp in range(10, 31):
-    print("Normal")
+    print("😃 Normal")
 elif temp >= 0 and temp < 10:
-    print("Frio")
+    print("🥶 Frio")
 elif temp < 0:
-    print("ALERTA!!! Frio extremo.")
+    print("ALERTA!!! ☃️ Frio extremo.")
