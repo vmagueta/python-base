@@ -117,7 +117,6 @@ while True:
             f"{timestamp} - {user} - {operation}, {n1}, {n2} = {result}\n"
             )
     except PermissionError as e:
-        # TODO: logging
         log.error(
             '%(str(e))s'
         )
