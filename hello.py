@@ -29,7 +29,6 @@ import sys
 import logging
 
 # BOILERPLATE
-# TODO: usar função
 # TODO: usar lib (loguru)
 log_level = os.getenv("LOG_LEVEL", "WARNING").upper()
 log = logging.Logger("hello.py", log_level)
@@ -65,7 +64,6 @@ for arg in sys.argv[1:]:
 current_language = arguments["lang"]
 
 if current_language is None:
-    # TODO: Usar repetição
     if "LANG" in os.environ:
         current_language = os.getenv("LANG")
     else:
